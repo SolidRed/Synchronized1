@@ -7,14 +7,14 @@ public class Worker {
 	private ArrayList<Integer> list1 = new ArrayList<Integer>();
 	private ArrayList<Integer> list2 = new ArrayList<Integer>();
 	private Object lock1 = new Object();
-	private Object lock2 = new Object();
+	
 	
 	private Random random = new Random();
 
-	private void partOne(){
+	private synchronized void partOne(){
 		synchronized (lock1) {
 			
-		
+		}
 		try {
 			Thread.sleep(1);
 		} catch (InterruptedException e) {
@@ -22,13 +22,9 @@ public class Worker {
 			e.printStackTrace();
 		}
 		list1.add(random.nextInt(100));
-		}
 	}
 	
 	private void partTwo(){
-		synchronized (lock2) {
-			
-		
 		try {
 			Thread.sleep(1);
 		} catch (InterruptedException e) {
@@ -36,7 +32,6 @@ public class Worker {
 			e.printStackTrace();
 		}
 		list2.add(random.nextInt(100));
-		}
 	}
 	
 	private void proceed(){
